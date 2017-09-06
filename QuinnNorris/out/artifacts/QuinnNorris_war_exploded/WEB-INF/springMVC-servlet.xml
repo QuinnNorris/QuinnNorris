@@ -16,16 +16,14 @@
 
     <mvc:default-servlet-handler />
 
-
-
     <context:component-scan base-package="com.quinnnorris.ssm"/>
 
-    <context:property-placeholder location="/WEB-INF/db.properties"/>
+    <context:property-placeholder location="classpath:db.properties"/>
 
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="/WEB-INF/db.properties"/>
+        <property name="location" value="classpath:db.properties"/>
     </bean>
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driver}"/>
@@ -39,7 +37,7 @@
         <property name="maxWaitMillis" value="${maxWaitMillis}"/>
     </bean>
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="configLocation" value="/WEB-INF/SqlMapConfig.xml"/>
+        <property name="configLocation" value="classpath:SqlMapConfig.xml"/>
         <property name="dataSource" ref="dataSource"/>
     </bean>
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
@@ -47,7 +45,7 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="prefix" value="/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
