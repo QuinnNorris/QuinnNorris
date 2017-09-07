@@ -86,9 +86,9 @@
                     <div class="cont_form_login"><a href="#" onclick="ocultar_login_sign_up()"><i
                             class="material-icons">&#xE5C4;</i></a>
                         <h2>LOGIN</h2>
-                        <input type="text" placeholder="Email"/>
-                        <input type="password" placeholder="Password"/>
-                        <button class="btn_login" <%--onclick="cambiar_login()"--%>>LOGIN</button>
+                        <input type="text" id="log_email" name="log_email" placeholder="Email"/>
+                        <input type="password" id="log_pwd" name="log_pwd" placeholder="Password"/>
+                        <button class="btn_login" onclick="sign_login()">LOGIN</button>
                     </div>
                     <div class="cont_form_sign_up"><a href="#" onclick="ocultar_login_sign_up()"><i
                             class="material-icons">&#xE5C4;</i></a>
@@ -97,6 +97,7 @@
                         <input type="text" id="reg_name" name="reg_name" placeholder="NickName"/>
                         <input type="password" id="reg_pwd" name="reg_pwd" placeholder="Password"/>
                         <input type="password" id="reg_cpwd" name="reg_cpwd" placeholder="Confirm Password"/>
+                        <p hidden id="tip" name="tip"></p>
                         <button class="btn_sign_up" onclick="sign_up()">SIGN UP</button>
                     </div>
                 </div>
@@ -117,13 +118,30 @@
         //alert(hex_md5($("#reg_pwd").val())+" "+ hex_md5($("#reg_cpwd").val())+" "+$("#reg_email").val()+" "+$("#reg_name").val());
         var pwd_md5 = hex_md5($("#reg_pwd").val());
         var cpwd_md5 = hex_md5($("#reg_cpwd").val());
+        var email = $("#reg_email").val();
+        var nickname = $("#reg_name").val();
+        var myreg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+$/;
+        var myregn = /^[a-zA-Z0-9_]+$/;
         if (pwd_md5 != cpwd_md5) {
-            alert("xa")
+            if (typeof($("#tip").attr("hidden")) != "undefined") $("#tip").removeAttr("hidden");
+            $("#tip").text("Password inconsistency!");
+        } else if ($("#reg_pwd").val().length < 6) {
+            if (typeof($("#tip").attr("hidden")) != "undefined") $("#tip").removeAttr("hidden");
+            $("#tip").text("Password to short(longer than 6)!");
+        } else if ($("#reg_pwd").val().length > 20) {
+            if (typeof($("#tip").attr("hidden")) != "undefined") $("#tip").removeAttr("hidden");
+            $("#tip").text("Password to long(short than 20)!");
+        } else if (!myreg.test(email)) {
+            if (typeof($("#tip").attr("hidden")) != "undefined") $("#tip").removeAttr("hidden");
+            $("#tip").text("Illegal mailbox!");
+        } else if (!myregn.test(nickname)) {
+            if (typeof($("#tip").attr("hidden")) != "undefined") $("#tip").removeAttr("hidden");
+            $("#tip").text("Illegal nickname!");
+        } else if (nickname.length<4 || nickname.length>15) {
+            if (typeof($("#tip").attr("hidden")) != "undefined") $("#tip").removeAttr("hidden");
+            $("#tip").text("Illegal nickname(Length is not legal)!");
         }
         else {
-            var email = $("#reg_email").val();
-            var nickname = $("#reg_name").val();
-
             $.ajax({
 
                 url: '${pageContext.request.contextPath}/register',
@@ -136,6 +154,20 @@
                 }
             });
         }
+    }
+    function sign_login() {
+        var pwd_md5 = hex_md5($("#log_pwd").val());
+        var email = $("#log_email").val();
+        $.ajax({
+            url: '${pageContext.request.contextPath}/login',
+            type: 'post',
+            contentType: 'application/x-www-form-urlencoded',
+            data: {email: email, pwd: pwd_md5},
+            dataType: "json",
+            success: function (data) {
+                alert(data.errorCode);
+            }
+        });
     }
 </script>
 </html>

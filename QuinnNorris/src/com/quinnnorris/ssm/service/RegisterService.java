@@ -17,6 +17,6 @@ import org.springframework.stereotype.Service;
  */
 public interface RegisterService {
 
-    public BaseJson insertUserFromReg(UserCustom userCustom) throws Exception;
+    public BaseJson insertUserFromReg(UserCustom userCustom);
 
 }

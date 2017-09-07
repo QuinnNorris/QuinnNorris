@@ -10,6 +10,7 @@
     </insert>
 
     <select id="selectUserByEmail" parameterType="UserCustom" resultType="UserCustom">
-        SELECT * FROM USER WHERE email = #{email}
+        SELECT * FROM user WHERE email = #{email}
     </select>
+
 </mapper>
