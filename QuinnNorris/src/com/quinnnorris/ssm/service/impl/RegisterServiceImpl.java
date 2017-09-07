@@ -34,6 +34,11 @@ public class RegisterServiceImpl implements RegisterService {
             baseJson.setErrorCode("1001");//用户已经注册
             return baseJson;
         }
+        List<UserCustom> selectRes2 = userCustomMapper.selectUserByNickname(userCustom);
+        if (selectRes != null && selectRes.size() >= 1) {
+            baseJson.setErrorCode("1003");//昵称重复注册失败
+            return baseJson;
+        }
         userCustom.setRegtime(new Date());
         userCustomMapper.insertUserFromReg(userCustom);
         baseJson.setErrorCode("0001");//用户成功注册

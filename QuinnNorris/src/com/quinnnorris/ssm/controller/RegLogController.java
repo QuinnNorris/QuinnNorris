@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Title: regLogController
- * Description:
+ * Description: 对接登录注册的控制器
  * Company: www.QuinnNorris.com
  *
  * @date: 2017/9/5 下午7:11 星期二

@@ -21,6 +21,6 @@ public interface UserCustomMapper {
 
     public void insertUserFromReg(UserCustom userCustom);
 
-
+    public List<UserCustom> selectUserByNickname(UserCustom userCustom);
 
 }
