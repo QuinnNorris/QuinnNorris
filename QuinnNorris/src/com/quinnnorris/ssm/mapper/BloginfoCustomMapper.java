@@ -1,13 +1,10 @@
 package com.quinnnorris.ssm.mapper;
 
-import com.quinnnorris.ssm.bean.Bloginfo;
 import com.quinnnorris.ssm.bean.BloginfoCustom;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 /**
- * Title: BloginfoCustomMapper
+ * Title: BloginfoCustomMappe
  * Description:
  * Company: www.QuinnNorris.com
  *
@@ -18,6 +15,14 @@ import java.util.List;
 @Repository("bloginfoCustomMapper")
 public interface BloginfoCustomMapper {
 
-    public List<BloginfoCustom> selectBloginfoByNickname(BloginfoCustom bloginfoCustom);
+    public BloginfoCustom selectBloginfoByNickname(BloginfoCustom bloginfoCustom);
+
+    public void updateBloginfoHits(int i);
+
+    public void updateBloginfoScore(int i);
+
+    public void updateBloginfoArticles();
+
+    public void updateBloginfoFans();
 
 }

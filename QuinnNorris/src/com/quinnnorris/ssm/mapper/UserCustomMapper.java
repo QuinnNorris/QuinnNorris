@@ -1,5 +1,6 @@
 package com.quinnnorris.ssm.mapper;
 
+import com.quinnnorris.ssm.bean.BloginfoCustom;
 import com.quinnnorris.ssm.bean.UserCustom;
 import org.springframework.stereotype.Repository;
 
@@ -20,6 +21,8 @@ public interface UserCustomMapper {
     public List<UserCustom> selectUserByEmail(UserCustom userCustom);
 
     public void insertUserFromReg(UserCustom userCustom);
+
+    public void insertBloginfoFromReg(BloginfoCustom bloginfoCustom);
 
     public List<UserCustom> selectUserByNickname(UserCustom userCustom);
 

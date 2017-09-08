@@ -3,14 +3,19 @@
 <mapper namespace="com.quinnnorris.ssm.mapper.UserCustomMapper">
 
     <insert id="insertUserFromReg" parameterType="UserCustom">
-        <selectKey keyProperty="id" order="AFTER" resultType="int">
-            SELECT last_insert_id()
-        </selectKey>
         INSERT INTO user (email,password,nickname,regtime) VALUE (#{email},#{password},#{nickname},#{regtime})
+    </insert>
+
+    <insert id="insertBloginfoFromReg" parameterType="BloginfoCustom">
+        INSERT INTO bloginfo (nickname) VALUE (#{nickname})
     </insert>
 
     <select id="selectUserByEmail" parameterType="UserCustom" resultType="UserCustom">
         SELECT * FROM user WHERE email = #{email}
+    </select>
+
+    <select id="selectUserByNickname" parameterType="UserCustom" resultType="UserCustom">
+        SELECT * FROM user WHERE nickname = #{nickname}
     </select>
 
 </mapper>

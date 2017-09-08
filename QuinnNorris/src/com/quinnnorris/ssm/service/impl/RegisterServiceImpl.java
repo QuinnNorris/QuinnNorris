@@ -1,6 +1,8 @@
 package com.quinnnorris.ssm.service.impl;
 
 import com.quinnnorris.ssm.basejson.BaseJson;
+import com.quinnnorris.ssm.bean.Bloginfo;
+import com.quinnnorris.ssm.bean.BloginfoCustom;
 import com.quinnnorris.ssm.bean.UserCustom;
 import com.quinnnorris.ssm.mapper.UserCustomMapper;
 import com.quinnnorris.ssm.service.RegisterService;
@@ -40,7 +42,10 @@ public class RegisterServiceImpl implements RegisterService {
             return baseJson;
         }
         userCustom.setRegtime(new Date());
+        BloginfoCustom bloginfoCustom = new BloginfoCustom();
+        bloginfoCustom.setNickname(userCustom.getNickname());
         userCustomMapper.insertUserFromReg(userCustom);
+        userCustomMapper.insertBloginfoFromReg(bloginfoCustom);
         baseJson.setErrorCode("0001");//用户成功注册
         baseJson.setObject(-1);
         baseJson.setObject(userCustom.getId());

@@ -1,17 +1,21 @@
 package com.quinnnorris.ssm.controller;
 
 import com.quinnnorris.ssm.basejson.BaseJson;
+import com.quinnnorris.ssm.bean.ArticleCustom;
 import com.quinnnorris.ssm.bean.BloginfoCustom;
 import com.quinnnorris.ssm.service.GetMessageService;
-import com.quinnnorris.ssm.service.impl.LoginServiceImpl;
-import com.quinnnorris.ssm.service.impl.RegisterServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,7 +34,8 @@ public class BlogController {
     private GetMessageService getMessageService;
 
     @RequestMapping("/BlogPage/{nickname}")
-    public String turnToBlogPage(@PathVariable String nickname, Model model) {
+    public String turnToBlogPage(@PathVariable String nickname, HttpSession httpSession, Model model) {
+        int pageNow = (Integer)httpSession.getAttribute("pageNow");
         BaseJson baseJson = getMessageService.getBlogInfo(nickname);
         Map<String, String> map = new HashMap<String, String>();
         BloginfoCustom bloginfoCustom = (BloginfoCustom) baseJson.getObject();
@@ -40,6 +45,7 @@ public class BlogController {
         map.put("fans", bloginfoCustom.getFans() + "");
         map.put("score", bloginfoCustom.getScore() + "");
         model.addAllAttributes(map);
+        model.addAttribute("artList", (List<ArticleCustom>) getMessageService.showArticlesByPage(nickname, pageNow).getObject());
         return "BlogPage";
     }
 

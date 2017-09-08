@@ -66,7 +66,7 @@
             window.location.href = "${pageContext.request.contextPath}/jsp/SignUp.jsp";
         }
         else {
-            <%request.setAttribute("nickname",session.getAttribute("nickname"));%>
+            <%request.setAttribute("nickname",session.getAttribute("nickname"));session.setAttribute("pageNow",1);%>
             window.location.href = "${pageContext.request.contextPath}/BlogPage/" + nickname;
         }
     }

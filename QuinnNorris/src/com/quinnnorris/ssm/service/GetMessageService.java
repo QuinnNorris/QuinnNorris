@@ -15,4 +15,8 @@ public interface GetMessageService {
 
     public BaseJson getBlogInfo(String nickname);
 
+    public BaseJson getArticles(String nickname);
+
+    public BaseJson showArticlesByPage(String nickname, int pageNow);
+
 }

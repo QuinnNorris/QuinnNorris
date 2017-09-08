@@ -38,13 +38,13 @@
             <a href="#"><img src="${pageContext.request.contextPath}/res/blog/images/avatar.jpg" alt="avatar"/></a>
         </span>
         </div>
-        <h1 id="logo"><a href="#">Quinn Norris</a></h1>
-        <p>I am a slow walker,<br/>but I never walk backwards.</p>
+        <h1 id="logo"><a href="#">${nickname}</a></h1>
+        <p>${note}</p>
     </header>
     <nav id="nav">
         <ul>
-            <li><p>Hits: &nbsp;&nbsp;&nbsp; 43291 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Score: &nbsp;&nbsp;&nbsp;1932</li>
-            <li><p>Articles:&nbsp;&nbsp;&nbsp; 48 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Fanssi></Fanssi>:&nbsp;&nbsp;&nbsp; 628</p></li>
+            <li><p>Hits: &nbsp;&nbsp;&nbsp; ${hits} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Score: &nbsp;&nbsp;&nbsp;${score}</li>
+            <li><p>Articles:&nbsp;&nbsp;&nbsp; ${articles} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fans: &nbsp;&nbsp;&nbsp; ${fans}</p></li>
         </ul>
     </nav>
     <footer>
@@ -64,8 +64,8 @@
 
         <section class="one" id="first">
             <div class="container">
-                <h2><a href="#">JAVA hello,world!</a></h2>
-                <b>Author：</b> QuanNingZhen <b>&nbsp;&nbsp;CreateTime：</b>2017-9-7 14:31 <b>&nbsp;&nbsp;Readed：</b>323
+                <h2><a href="#">${artList.get(0).name}</a></h2>
+                <b>Author：</b> ${nickname} <b>&nbsp;&nbsp;CreateTime：</b>${artList.get(0).createtime} <b>&nbsp;&nbsp;Readed：</b>${artList.get(0).readed}
                 times
                 <hr/>
                 <p>Faucibus sed lobortis aliquam lorem blandit. Lorem eu nunc metus col. Commodo id in arcu ante

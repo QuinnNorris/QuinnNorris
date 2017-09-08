@@ -66,19 +66,8 @@
             window.location.href = "${pageContext.request.contextPath}/jsp/SignUp.jsp";
         }
         else {
-            <%request.setAttribute("nickname",session.getAttribute("nickname"));%>
+            <%request.setAttribute("nickname",session.getAttribute("nickname"));session.setAttribute("pageNow",1);%>
             window.location.href = "${pageContext.request.contextPath}/BlogPage/" + nickname;
-            /*alert("2");
-            $.ajax({
-                url: '{pageContext.request.contextPath}/BlogPage/' + nickname,
-                type: 'post',
-                contentType: 'application/x-www-form-urlencoded',
-                data: {nickname: nickname},
-                dataType: "json",
-//                success: function (data) {
-//                    alert(data.errorCode);
-//                }
-            });*/
         }
     }
 </script>
