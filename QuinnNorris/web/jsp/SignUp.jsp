@@ -137,7 +137,7 @@
         } else if (!myregn.test(nickname)) {
             if (typeof($("#tip").attr("hidden")) != "undefined") $("#tip").removeAttr("hidden");
             $("#tip").text("Illegal nickname!");
-        } else if (nickname.length<4 || nickname.length>15) {
+        } else if (nickname.length < 4 || nickname.length > 15) {
             if (typeof($("#tip").attr("hidden")) != "undefined") $("#tip").removeAttr("hidden");
             $("#tip").text("Illegal nickname(Length is not legal)!");
         }
@@ -150,11 +150,13 @@
                 data: {email: email, nickname: nickname, pwd: pwd_md5},
                 dataType: "json",
                 success: function (data) {
-                    alert(data.errorCode);
+                    <%request.setAttribute("nickname",session.getAttribute("nickname"));session.setAttribute("pageNow",1);%>
+                    window.location.href = "${pageContext.request.contextPath}/BlogPage/" + <%=session.getAttribute("nickname")%>;
                 }
             });
         }
     }
+
     function sign_login() {
         var pwd_md5 = hex_md5($("#log_pwd").val());
         var email = $("#log_email").val();
@@ -165,7 +167,8 @@
             data: {email: email, pwd: pwd_md5},
             dataType: "json",
             success: function (data) {
-                alert(data.errorCode);
+                <%request.setAttribute("nickname",session.getAttribute("nickname"));session.setAttribute("pageNow",1);%>
+                window.location.href = "${pageContext.request.contextPath}/BlogPage/" + <%=session.getAttribute("nickname")%>;
             }
         });
     }

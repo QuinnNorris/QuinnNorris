@@ -65,7 +65,7 @@
         <section class="one" id="first">
             <div class="container">
                 <h2><a href="#">${artList.get(0).name}</a></h2>
-                <b>Author：</b> ${nickname} <b>&nbsp;&nbsp;CreateTime：</b>${artList.get(0).createtime} <b>&nbsp;&nbsp;Readed：</b>${artList.get(0).readed}
+                <b>Author：</b> ${nickname} <b>&nbsp;&nbsp;CreateTime：</b>${artList.get(0).createtimestr} <b>&nbsp;&nbsp;Readed：</b>${artList.get(0).readed}
                 times
                 <hr/>
                 <p>Faucibus sed lobortis aliquam lorem blandit. Lorem eu nunc metus col. Commodo id in arcu ante

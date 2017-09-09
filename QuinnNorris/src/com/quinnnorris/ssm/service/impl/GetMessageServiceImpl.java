@@ -8,10 +8,12 @@ import com.quinnnorris.ssm.mapper.ArticleCustomMapper;
 import com.quinnnorris.ssm.mapper.BloginfoCustomMapper;
 import com.quinnnorris.ssm.mapper.UserCustomMapper;
 import com.quinnnorris.ssm.service.GetMessageService;
+import com.quinnnorris.ssm.util.DataFormat;
 import com.quinnnorris.ssm.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -71,7 +73,6 @@ public class GetMessageServiceImpl implements GetMessageService {
         articleCustom.setPageSize(page.getPageSize());
         articleCustom.setStartPos(page.getStartPos());
         List<ArticleCustom> selectRes = articleCustomMapper.selectArticleByPage(articleCustom);
-
         BaseJson baseJson = new BaseJson();
         baseJson.setObject(selectRes);
 

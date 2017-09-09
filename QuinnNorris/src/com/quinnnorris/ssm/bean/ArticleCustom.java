@@ -13,6 +13,7 @@ public class ArticleCustom extends Article{
 
     private int startPos;
     private int pageSize;
+    private String createtimestr;
 
     public int getStartPos() {
         return startPos;
@@ -28,5 +29,13 @@ public class ArticleCustom extends Article{
 
     public void setPageSize(int pageSize) {
         this.pageSize = pageSize;
+    }
+
+    public String getCreatetimestr() {
+        return createtimestr;
+    }
+
+    public void setCreatetimestr(String createtimestr) {
+        this.createtimestr = createtimestr;
     }
 }
