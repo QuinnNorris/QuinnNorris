@@ -11,4 +11,6 @@ package com.quinnnorris.ssm.bean;
  */
 public class UserCustom extends User {
 
+
+
 }

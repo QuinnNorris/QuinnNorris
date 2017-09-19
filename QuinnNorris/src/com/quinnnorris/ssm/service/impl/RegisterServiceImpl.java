@@ -49,7 +49,6 @@ public class RegisterServiceImpl implements RegisterService {
         baseJson.setErrorCode("0001");//用户成功注册
         baseJson.setObject(-1);
         baseJson.setObject(userCustom.getId());
-        System.out.println("ser");
         return baseJson;
     }
 

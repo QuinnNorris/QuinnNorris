@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath }/res/style-noscript.css"/>
     </noscript>
     <!--[if lte IE 9]>
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/res/titleCom/css/ie/v9.css"/><![endif]-->
+    <link rel="stylesheet" href="s/res/titleCom/css/ie/v9.css"/><![endif]-->
     <!--[if lte IE 8]>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/res/titleCom/css/ie/v8.css"/><![endif]-->
 

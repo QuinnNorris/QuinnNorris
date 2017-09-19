@@ -62,7 +62,7 @@
 
     <div id="main">
 
-        <section class="one" id="first">
+        <%--<section class="one" id="first">
             <div class="container">
                 <h2><a href="#">${artList.get(0).name}</a></h2>
                 <b>Author：</b> ${nickname} <b>&nbsp;&nbsp;CreateTime：</b>${artList.get(0).createtimestr} <b>&nbsp;&nbsp;Readed：</b>${artList.get(0).readed}
@@ -76,7 +76,7 @@
                     integer
                     in curae ac faucibus integer non. Adipiscing cubilia elementum.</p>
             </div>
-        </section>
+        </section>--%>
         <section class="one">
             <div class="container">
                 <h2><a href="#">JAVA hello,world!</a></h2>
